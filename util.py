@@ -3,6 +3,7 @@
 #   inputs, problem descriptions, and uploading solutions.
 #
 # Remember: premature optimization is the root of many coding evils
+from typing import Iterator
 
 
 # best way is to learn from the best, here's some references to look at
