@@ -38,6 +38,24 @@
 #   sort B
 #   for i in count(input):
 #     total += abs(A[i] - B[i])
+import util
+
+
+def part1(filename: str):
+    # get sorted lists
+    A = []
+    B = []
+    for line in util.by_line(filename):
+        a, b = map(int, line.split())
+        A.insert(a)
+        B.insert(b)
+    A.sort()
+    B.sort()
+    # calculate sum of differences
+    total = 0
+    for i in count(len(A)):
+        total += abs(A[i] - B[i])
+    return total
 # Thoughts:
 # This is the most obvious solution, though it's likely possible to use a
 #   better approach by sorting inputs as they are received. It doesn't seem
@@ -47,3 +65,4 @@
 #   of both lists first. I considered a greedy approach to this, but that would
 #   calculate the wrong differences preemptively. There is no way to preempt
 #   the differences as far as I am aware.
+# There may be a quicker way to save on the sort step by running an insertion sort as you go...
