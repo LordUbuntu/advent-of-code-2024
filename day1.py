@@ -40,9 +40,9 @@
 #     total += abs(A[i] - B[i])
 def part1(filename: str) -> int:
     A, B = [], []
-    # == parse input ==
     # read file by line (input)
     with open(filename, "r") as file:
+        # == parse input ==
         for line in file.readlines():
             # get int a and b from col A and B
             a, b = map(int, line.split())
@@ -52,12 +52,13 @@ def part1(filename: str) -> int:
         # sort arrays
         A.sort()
         B.sort()
+        # == calculate sum of differences ==
         # calculate sum of difference
-        # TODO: this can be done better with a zip, then an anonymous function
-        #   can be used to easily change the operation mapped on the inputs.
-        total = 0
-        for i in range(len(A)):
-            total += abs(A[i] - B[i])
+        total = sum(map(lambda num: abs(num[0] - num[1]), zip(A, B)))
+        # same as doing:
+        # total = 0
+        # for i in range(len(A)):
+        #     total += abs(A[i] - B[i])
         return total
 # Thoughts:
 # This is the most obvious solution, though it's likely possible to use a
