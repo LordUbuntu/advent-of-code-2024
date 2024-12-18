@@ -38,6 +38,27 @@
 #   sort B
 #   for i in count(input):
 #     total += abs(A[i] - B[i])
+def part1(filename: str) -> int:
+    A, B = [], []
+    # == parse input ==
+    # read file by line (input)
+    with open(filename, "r") as file:
+        for line in file.readlines():
+            # get int a and b from col A and B
+            a, b = map(int, line.split())
+            # put into respective arrays
+            A.append(a)
+            B.append(b)
+        # sort arrays
+        A.sort()
+        B.sort()
+        # calculate sum of difference
+        # TODO: this can be done better with a zip, then an anonymous function
+        #   can be used to easily change the operation mapped on the inputs.
+        total = 0
+        for i in range(len(A)):
+            total += abs(A[i] - B[i])
+        return total
 # Thoughts:
 # This is the most obvious solution, though it's likely possible to use a
 #   better approach by sorting inputs as they are received. It doesn't seem
@@ -47,3 +68,7 @@
 #   of both lists first. I considered a greedy approach to this, but that would
 #   calculate the wrong differences preemptively. There is no way to preempt
 #   the differences as far as I am aware.
+# One potential improvement is to use a sort of selection sort or dequeue to
+#   add elements in a sorted order as they are received, so that the sort step
+#   is unnecessary later. It's unclear if that has any performance improvement
+#   though...
