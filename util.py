@@ -14,7 +14,7 @@ from typing import Iterator
 
 # A recurring pattern is to read one line at a time, so a generator
 #   is a convenient pattern for parsing inputs
-def by_line(filename: str) -> Iterator[str]:
+def by_line(filename: str, strip_chars: str = " ") -> Iterator[str]:
     with open(filename, 'r') as file:
         for line in file.readlines():
-            yield line
+            yield line.strip(strip_chars)
