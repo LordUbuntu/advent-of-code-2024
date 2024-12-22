@@ -1,6 +1,23 @@
 # Jacobus Burger (2024-12-01)
 # Advent Of Code - Day 1
 
+# Day 1 - Parser
+# From my understanding, the parsing from part 1 (and parsing for any day) is
+#   the same between parts, and sometimes between days too. So it makes the
+#   most sense to write the parse seperate of each part's solver.
+def parse(filename: str) -> list:
+    A, B = [], []
+    # read file by line (input)
+    with open(filename, "r") as file:
+        # == parse input ==
+        for line in file.readlines():
+            # get int a and b from col A and B
+            a, b = map(int, line.split())
+            # put into respective arrays
+            A.append(a)
+            B.append(b)
+    return [A, B]
+
 
 # Part 1 - Theory
 # My understanding is we want to take the difference between the left and right
@@ -22,39 +39,31 @@
 # 4   9   d5
 # 2 + 1 + 0 + 1 + 2 + 5 = 11
 #
-# Solution Idea 1:
+# Solution Idea:
 # From this, one direct idea is to take the two columns of numbers into their own
 #   seperate lists, sort them, then take their sorted differences like above.
-# Pseudocode 1:
-#   input is array of string
-#   A is array of int
-#   B is array of int
-#   total is int
-#
-#   for a, b in input:
-#     add a to A
-#     add b to B
-#   sort A
-#   sort B
-#   for i in count(input):
-#     total += abs(A[i] - B[i])
+# Method:
+#   1. parse input into arrays A and B
+#   2. sort A and B
+#   3. calculate sum of differences
+# Pseudocode:
+#   1. parse
+#   for a, b in read(file):
+#       A.append(a)
+#       B.append(b)
+#   2. sort
+#   A.sort()
+#   B.sort()
+#   3. calculate (solve)
+#   return sum([abs(a - b) for a, b in zip(A, B)])
 def part1(filename: str) -> int:
-    A, B = [], []
-    # read file by line (input)
-    with open(filename, "r") as file:
-        # == parse input ==
-        for line in file.readlines():
-            # get int a and b from col A and B
-            a, b = map(int, line.split())
-            # put into respective arrays
-            A.append(a)
-            B.append(b)
+        A, B = parse(filename)
+        # == solve ==
         # sort arrays
         A.sort()
         B.sort()
-        # == calculate sum of differences ==
         # calculate sum of difference
-        total = sum(map(lambda num: abs(num[0] - num[1]), zip(A, B)))
+        total = sum([abs(a, b) for a, b in zip(A, B)])
         # same as doing:
         # total = 0
         # for i in range(len(A)):
