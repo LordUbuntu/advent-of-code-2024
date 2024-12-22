@@ -82,3 +82,7 @@ def part1(filename: str) -> int:
 #   add elements in a sorted order as they are received, so that the sort step
 #   is unnecessary later. It's unclear if that has any performance improvement
 #   though...
+
+
+# Part 2 - Theory
+# TODO
