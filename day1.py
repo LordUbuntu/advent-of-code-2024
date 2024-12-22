@@ -63,7 +63,7 @@ def part1(filename: str) -> int:
         A.sort()
         B.sort()
         # calculate sum of difference
-        total = sum([abs(a, b) for a, b in zip(A, B)])
+        total = sum([abs(a - b) for a, b in zip(A, B)])
         # same as doing:
         # total = 0
         # for i in range(len(A)):
