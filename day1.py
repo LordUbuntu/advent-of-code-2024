@@ -1,5 +1,6 @@
 # Jacobus Burger (2024-12-01)
 # Advent Of Code - Day 1
+# COMPLETED!
 
 # Day 1 - Parser
 # From my understanding, the parsing from part 1 (and parsing for any day) is
