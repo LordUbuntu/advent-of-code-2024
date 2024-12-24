@@ -65,12 +65,7 @@ def part1(filename: str) -> int:
         A.sort()
         B.sort()
         # calculate sum of difference
-        total = sum([abs(a - b) for a, b in zip(A, B)])
-        # same as doing:
-        # total = 0
-        # for i in range(len(A)):
-        #     total += abs(A[i] - B[i])
-        return total
+        return sum([abs(a - b) for a, b in zip(A, B)])
 # Thoughts:
 # This is the most obvious solution, though it's likely possible to use a
 #   better approach by sorting inputs as they are received. It doesn't seem
