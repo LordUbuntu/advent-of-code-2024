@@ -128,3 +128,12 @@ def part1(filename: str) -> int:
 #   snakelang 🐍)
 #   3. tally
 #   return sum([a * map[a] for a in A])
+from collections import Counter
+
+def part2(filename: str) -> int:
+    # parse input
+    A, B = parse(filename)
+    # create hashmap
+    map = Counter(B)  # I love snakelang 🐍
+    # return total
+    return sum([a * map[a] for a in A])
