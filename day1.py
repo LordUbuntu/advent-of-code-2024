@@ -5,6 +5,9 @@
 # From my understanding, the parsing from part 1 (and parsing for any day) is
 #   the same between parts, and sometimes between days too. So it makes the
 #   most sense to write the parse seperate of each part's solver.
+# The idea is to split the two vertical lists of numbers into two lists, so data
+#   ingested in the format `a   b\n` becomes `int(a), int(b)` and then is stored
+#   into two lists `A` and `B`.
 def parse(filename: str) -> list:
     A, B = [], []
     # read file by line (input)
