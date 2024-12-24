@@ -41,7 +41,6 @@ def parse(filename: str) -> list:
 # 3   5   d2
 # 4   9   d5
 # 2 + 1 + 0 + 1 + 2 + 5 = 11
-#
 # Solution Idea:
 # From this, one direct idea is to take the two columns of numbers into their own
 #   seperate lists, sort them, then take their sorted differences like above.
@@ -109,3 +108,28 @@ def part1(filename: str) -> int:
 # 3   3o
 # 3   3o
 # 9 + 4 + 0 + 0 + 9 + 9
+# Solution Idea:
+# The items can be ingested into two lists, the left A can be left unsorted,
+#   the right B can be made into a hashmap storing the count of occurences
+#   for a given number in the right list B.
+# Method:
+# 1. parse input into arrays A and B
+# 2. create a hashmap of occurences from B
+# 3. for each number in A, calculate the product of that number with its
+#       occurences in B.
+# Pseudocode:
+#   1. parse
+#   for a, b in read(file):
+#       A.append(a)
+#       B.append(b)
+#   2. hashmap
+#   map = {}
+#   for value in B:
+#       if value not in map:
+#           map[value] = 1
+#       else:
+#           map[value] += 1
+#   (using Counter from itertools accomplishes the same thing but faster, I love
+#   snakelang 🐍)
+#   3. tally
+#   return sum([a * map[a] for a in A])
