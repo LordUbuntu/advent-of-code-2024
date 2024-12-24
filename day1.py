@@ -85,4 +85,24 @@ def part1(filename: str) -> int:
 
 
 # Part 2 - Theory
-# TODO
+# My understanding is that we want to find the count of each number on the left list
+#   in the right list. From there we want to multiply the count with the current
+#   number on the left and add that to a running total. Finally, get the sum of all
+#   that.
+# To do this, we can fallow the same parsing as part 1, but simply change the
+#   calculation.
+# Example:
+# 3   4
+# 4   3
+# 2   5
+# 1   3
+# 3   9
+# 3   3
+#
+# 3   3o
+# 4   1o
+# 2   0o
+# 1   0o
+# 3   3o
+# 3   3o
+# 9 + 4 + 0 + 0 + 9 + 9
