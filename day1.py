@@ -59,13 +59,13 @@ def parse(filename: str) -> list:
 #   3. calculate (solve)
 #   return sum([abs(a - b) for a, b in zip(A, B)])
 def part1(filename: str) -> int:
-        A, B = parse(filename)
-        # == solve ==
-        # sort arrays
-        A.sort()
-        B.sort()
-        # calculate sum of difference
-        return sum([abs(a - b) for a, b in zip(A, B)])
+    # parse arrays
+    A, B = parse(filename)
+    # sort arrays
+    A.sort()
+    B.sort()
+    # calculate sum of difference
+    return sum([abs(a - b) for a, b in zip(A, B)])
 # Thoughts:
 # This is the most obvious solution, though it's likely possible to use a
 #   better approach by sorting inputs as they are received. It doesn't seem
