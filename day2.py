@@ -29,3 +29,19 @@ def sign(n: int) -> int:
 #   levels that states a report as Unsafe if any of those conditions
 #   fail to be met.
 #   The number of safe reports is tallied, that sum is the solution.
+def part1(filename: str) -> int:
+    reports = parse(filename)
+    # I could do this part with zips and maps, there's a method to pair adjacent elements in a list from my Lambdanomicon (Python Tricks Section) but I'll leave it as this explicit sliding window for now
+    total = 0
+    for report in reports:
+        last_sign = sign(report[1] - report[0])  # start sign to compare
+        for i in range(1, len(report) - 1):
+            a, b = report[i - 1], report[i]
+            if sign(b - a) != last_sign:
+                break
+            if b - a < 1 or b - 1 > 3:
+                break
+        else:
+            # loop completed successfully, nothing unsafe
+            total += 1
+    return total
