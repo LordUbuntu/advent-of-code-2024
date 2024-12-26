@@ -12,3 +12,15 @@ def parse(filename: str) -> list[int]:
             list(map(int, line.split()))
             for line in file.readlines()
         ]
+
+
+# Part 1 checks if a report (line of input) is "safe" according to
+#   the two requirements that for that level
+# 1. all levels must be stricting increasing or decreasing in value
+#   (must be monotonically ordered)
+# 2. all adjacent levels must differ by >= 1 and <= 3
+# 
+# The most direct and simple solution is a sliding window to compare
+#   levels that states a report as Unsafe if any of those conditions
+#   fail to be met.
+#   The number of safe reports is tallied, that sum is the solution.
