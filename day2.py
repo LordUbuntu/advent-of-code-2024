@@ -14,6 +14,11 @@ def parse(filename: str) -> list[int]:
         ]
 
 
+# for part 1 it's helpful to be able to tell the sign of a difference
+def sign(n: int) -> int:
+    return (0 < n) - (0 > n)
+
+
 # Part 1 checks if a report (line of input) is "safe" according to
 #   the two requirements that for that level
 # 1. all levels must be stricting increasing or decreasing in value
