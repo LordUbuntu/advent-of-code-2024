@@ -19,6 +19,7 @@ def sign(n: int) -> int:
     return (0 < n) - (0 > n)
 
 
+# PART 1 COMPLETE 2024-12-26
 # Part 1 checks if a report (line of input) is "safe" according to
 #   the two requirements that for that level
 # 1. all levels must be stricting increasing or decreasing in value
