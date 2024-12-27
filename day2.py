@@ -39,8 +39,9 @@ def part1(filename: str) -> int:
             a, b = report[i - 1], report[i]
             if sign(b - a) != last_sign:
                 break
-            if b - a < 1 or b - 1 > 3:
+            if abs(b - a) < 1 or abs(b - a) > 3:
                 break
+            last_sign = sign(b - a)
         else:
             # loop completed successfully, nothing unsafe
             total += 1
