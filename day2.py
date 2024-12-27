@@ -35,8 +35,8 @@ def part1(filename: str) -> int:
     total = 0
     for report in reports:
         last_sign = sign(report[1] - report[0])  # start sign to compare
-        for i in range(1, len(report) - 1):
-            a, b = report[i - 1], report[i]
+        for i in range(0, len(report) - 1):
+            a, b = report[i], report[i + 1]
             if sign(b - a) != last_sign:
                 break
             if abs(b - a) < 1 or abs(b - a) > 3:
