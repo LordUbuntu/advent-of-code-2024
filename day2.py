@@ -54,6 +54,9 @@ def part1(filename: str) -> int:
 # 
 # My solution is to just copy-paste the code and add a "damper" flag
 #   that will fail if the damper was already used.
+# 
+# Turns out the solution is more complicated than simply ignoring
+#   a bad level greedily...
 def part2(filename: str) -> int:
     reports = parse(filename)
     # I could do this part with zips and maps, there's a method to pair adjacent elements in a list from my Lambdanomicon (Python Tricks Section) but I'll leave it as this explicit sliding window for now
