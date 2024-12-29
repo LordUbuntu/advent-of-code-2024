@@ -54,18 +54,25 @@ def part1(filename: str) -> int:
 # 
 # My solution is to just copy-paste the code and add a "damper" flag
 #   that will fail if the damper was already used.
-def part1(filename: str) -> int:
+def part2(filename: str) -> int:
     reports = parse(filename)
     # I could do this part with zips and maps, there's a method to pair adjacent elements in a list from my Lambdanomicon (Python Tricks Section) but I'll leave it as this explicit sliding window for now
     total = 0
     for report in reports:
         last_sign = sign(report[1] - report[0])  # start sign to compare
+        damper_used = False
         for i in range(0, len(report) - 1):
             a, b = report[i], report[i + 1]
             if sign(b - a) != last_sign:
-                break
+                if not damper_used:
+                    damper_used = True
+                else:
+                    break
             if abs(b - a) < 1 or abs(b - a) > 3:
-                break
+                if not damper_used:
+                    damper_used = True
+                else:
+                    break
             last_sign = sign(b - a)
         else:
             # loop completed successfully, nothing unsafe
