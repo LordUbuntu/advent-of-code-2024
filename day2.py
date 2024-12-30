@@ -57,6 +57,13 @@ def part1(filename: str) -> int:
 # 
 # Turns out the solution is more complicated than simply ignoring
 #   a bad level greedily...
+# A different solution might be to use a monotonic queue instead which
+#   would "kick out" "bad" levels. I knew it was monotnically ordered
+#   but I originally decided to skip writing one. In hindsight, a
+#   monotonically ordered queue would make the first solution easy
+#   (check if an element is rejected and return false) and also
+#   make this one easy (allow one ejection and see if the solution
+#   works by the same standard)
 def part2(filename: str) -> int:
     reports = parse(filename)
     # I could do this part with zips and maps, there's a method to pair adjacent elements in a list from my Lambdanomicon (Python Tricks Section) but I'll leave it as this explicit sliding window for now
