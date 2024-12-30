@@ -64,6 +64,9 @@ def part1(filename: str) -> int:
 #   (check if an element is rejected and return false) and also
 #   make this one easy (allow one ejection and see if the solution
 #   works by the same standard)
+# I'm overcomplicating things. Brute force will work just fine here. I
+#   can just go through index i across the list excluding that in the 
+#   solution from part 1 meaning I just do 7 repeats of the same approach
 def part2(filename: str) -> int:
     reports = parse(filename)
     # I could do this part with zips and maps, there's a method to pair adjacent elements in a list from my Lambdanomicon (Python Tricks Section) but I'll leave it as this explicit sliding window for now
