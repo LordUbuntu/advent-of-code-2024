@@ -85,7 +85,7 @@ def part2(filename: str) -> int:
                 modified_report = report.copy()
             else:
                 modified_report = report.copy()
-                modified_report.remove(l)
+                modified_report.pop(l)
             # check if all remaining levels pass
             for i in range(0, len(modified_report) - 1):
                 a, b = modified_report[i], modified_report[i + 1]
