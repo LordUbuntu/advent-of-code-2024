@@ -69,25 +69,26 @@ def part1(filename: str) -> int:
 #   solution from part 1 meaning I just do 7 repeats of the same approach
 def part2(filename: str) -> int:
     reports = parse(filename)
-    # I could do this part with zips and maps, there's a method to pair adjacent elements in a list from my Lambdanomicon (Python Tricks Section) but I'll leave it as this explicit sliding window for now
     total = 0
     for report in reports:
         last_sign = sign(report[1] - report[0])  # start sign to compare
-        damper_used = False
-        for i in range(0, len(report) - 1):
-            a, b = report[i], report[i + 1]
-            if sign(b - a) != last_sign:
-                if not damper_used:
-                    damper_used = True
-                else:
+        # need to figure out a way to iterate over every 1-level removed
+        #   permutation of the report
+        # maybe:
+        # - make a copy
+        # - remove an element (starting with none removed)
+        # - iterate like in part 1 over the modified copy
+        # - if it passes without failure, then count it
+        for l in range(0, len(report) - 1):
+            failed = False
+            for i in range(0, len(report) - 1):
+                a, b = report[i], report[i + 1]
+                if sign(b - a) != last_sign:
                     break
-            if abs(b - a) < 1 or abs(b - a) > 3:
-                if not damper_used:
-                    damper_used = True
-                else:
+                if abs(b - a) < 1 or abs(b - a) > 3:
                     break
-            last_sign = sign(b - a)
-        else:
-            # loop completed successfully, nothing unsafe
-            total += 1
+                last_sign = sign(b - a)
+            else:
+                # loop completed successfully, nothing unsafe
+                total += 1
     return total
