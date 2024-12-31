@@ -79,22 +79,29 @@ def part2(filename: str) -> int:
         # - remove an element (starting with none removed)
         # - iterate like in part 1 over the modified copy
         # - if it passes without failure, then count it
-        for l in range(len(report)):
+        report_counted = False
+        for l in range(len(report) + 1):
             # make a modified report with a missing list
             if l > len(report) - 1:
                 modified_report = report.copy()
             else:
                 modified_report = report.copy()
                 modified_report.pop(l)
+            print(l, modified_report)
             # check if all remaining levels pass
             for i in range(0, len(modified_report) - 1):
                 a, b = modified_report[i], modified_report[i + 1]
+                print("  ", i, a, b)
                 if sign(b - a) != last_sign:
                     break
                 if abs(b - a) < 1 or abs(b - a) > 3:
                     break
                 last_sign = sign(b - a)
             else:
-                # loop completed successfully, count it
+                print("counted\n\n")
                 total += 1
+                report_counted = True
+                break  # upon a success, count the report ONCE!
+        if report_counted:
+            continue
     return total
