@@ -79,5 +79,19 @@ def part2(filename: str) -> int:
             else report[:i] + report[i + 1:]
             for i in range(-1, len(report))
         ]
-        print(tries)
+        for t in tries:
+            # count report if valid
+            valid = True
+            for i in range(len(t) - 1):
+                a, b = t[i], t[i + 1]
+                if sign(b - a) != last_sign:
+                    valid = False
+                    break
+                if abs(b - a) < 1 or abs(b - a) > 3:
+                    valid = False
+                    break
+                last_sign = sign(b - a)
+            if valid:
+                total += 1
+                break
     return total
