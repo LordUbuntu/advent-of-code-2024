@@ -14,12 +14,15 @@ def parse(filename: str) -> list[int]:
         ]
 
 
-# for part 1 it's helpful to be able to tell the sign of a difference
-def sign(n: int) -> int:
-    return (0 < n) - (0 > n)
+# credit to user "Independent_Check_62" on https://www.reddit.com/r/adventofcode/comments/1h4ncyr/2024_day_2_solutions/
+def valid(report: list) -> bool:
+    # create a set of differences
+    deltas = {report[i + 1] - report[i] for i in range(len(report) - 1)}
+    # return true if it's a subset of the correct change and sign
+    return deltas <= {1, 2, 3} or deltas <= {-1, -2, -3}
 
 
-# PART 1 COMPLETE 2024-12-26
+# PART 1 COMPLETE 2024-12-26, UPDATE 2025-01-10
 # Part 1 checks if a report (line of input) is "safe" according to
 #   the two requirements that for that level
 # 1. all levels must be stricting increasing or decreasing in value
@@ -30,22 +33,11 @@ def sign(n: int) -> int:
 #   levels that states a report as Unsafe if any of those conditions
 #   fail to be met.
 #   The number of safe reports is tallied, that sum is the solution.
+# A slightly better approach simplified the problem by using set
+#   membership as a filter for report validity.
 def part1(filename: str) -> int:
     reports = parse(filename)
-    # I could do this part with zips and maps, there's a method to pair adjacent elements in a list from my Lambdanomicon (Python Tricks Section) but I'll leave it as this explicit sliding window for now
-    total = 0
-    for report in reports:
-        last_sign = sign(report[1] - report[0])  # start sign to compare
-        for i in range(0, len(report) - 1):
-            a, b = report[i], report[i + 1]
-            if sign(b - a) != last_sign:
-                break
-            if abs(b - a) < 1 or abs(b - a) > 3:
-                break
-            last_sign = sign(b - a)
-        else:
-            # loop completed successfully, nothing unsafe
-            total += 1
+    total = sum([valid(report) for report in reports])
     return total
 
 
