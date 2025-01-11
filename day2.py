@@ -42,48 +42,19 @@ def part1(filename: str) -> int:
 
 
 
+# PART 2 COMPLETE 2025-01-10
 # Part 2 is part 1 but with a grace of one failure (bool flag)
-# 
-# My solution is to just copy-paste the code and add a "damper" flag
-#   that will fail if the damper was already used.
-# 
-# Turns out the solution is more complicated than simply ignoring
-#   a bad level greedily...
-# A different solution might be to use a monotonic queue instead which
-#   would "kick out" "bad" levels. I knew it was monotnically ordered
-#   but I originally decided to skip writing one. In hindsight, a
-#   monotonically ordered queue would make the first solution easy
-#   (check if an element is rejected and return false) and also
-#   make this one easy (allow one ejection and see if the solution
-#   works by the same standard)
-# I'm overcomplicating things. Brute force will work just fine here. I
-#   can just go through index i across the list excluding that in the 
-#   solution from part 1 meaning I just do 7 repeats of the same approach
+# The solution to part 2 is to do the same as part 1 but to check the
+#   combinations of the report with 1 level removed and if any of those
+#   combinations are correct, to count it as safe and move on. Same as
+#   before but hopefully it works properly this time!
 def part2(filename: str) -> int:
     reports = parse(filename)
-    total = 0
-    for report in reports:
-        last_sign = sign(report[1] - report[0])  # start sign to compare
-        # try each report unmodified or modified with one level gone
-        tries = [
-            report
-            if i < 0
-            else report[:i] + report[i + 1:]
-            for i in range(-1, len(report))
-        ]
-        for t in tries:
-            # count report if valid
-            valid = True
-            for i in range(len(t) - 1):
-                a, b = t[i], t[i + 1]
-                if sign(b - a) != last_sign:
-                    valid = False
-                    break
-                if abs(b - a) < 1 or abs(b - a) > 3:
-                    valid = False
-                    break
-                last_sign = sign(b - a)
-            if valid:
-                total += 1
-                break
+    total = sum([
+        any(
+            valid(report[:i] + report[i + 1:])
+            for i in range(len(report))
+        )
+        for report in reports
+    ])
     return total
