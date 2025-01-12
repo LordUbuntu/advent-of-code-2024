@@ -7,8 +7,11 @@ import re
 def parse(filename: str, pattern: str) -> list:
     return re.findall(pattern, open(filename, "r").read())
 
-# mul\(\d{1,3}\,\d{1,3}\)
-
 
 # day 3 part 1 is simple, just use regex to match specified pattern,
 #   then calculate it
+def part1(filename: str) -> int:
+    # mul\(\d{1,3}\,\d{1,3}\) == mul(123,456)
+    expr = r"mul\(\d{1,3}\,\d{1,3}\)"
+    operations = parse(filename, expr)
+    print(operations)
