@@ -16,9 +16,10 @@ def part1(filename: str) -> int:
     operations = parse(filename, expr)
     # get the pair of numbers of each operation, then sum their products
     products = [
-        a * b
-        for a, b in operation.strip("mul()").split(',')
-        for operation in operations
+        n[0] * n[1]
+        for n in [
+            list(map(int, operation.strip("mul()").split(',')))
+            for operation in operations
+        ]
     ]
     print(operations, products)
-
