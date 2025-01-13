@@ -14,4 +14,11 @@ def part1(filename: str) -> int:
     # mul\(\d{1,3}\,\d{1,3}\) == mul(123,456)
     expr = r"mul\(\d{1,3}\,\d{1,3}\)"
     operations = parse(filename, expr)
-    print(operations)
+    # get the pair of numbers of each operation, then sum their products
+    products = [
+        a * b
+        for a, b in operation.strip("mul()").split(',')
+        for operation in operations
+    ]
+    print(operations, products)
+
