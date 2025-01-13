@@ -8,6 +8,7 @@ def parse(filename: str, pattern: str) -> list:
     return re.findall(pattern, open(filename, "r").read())
 
 
+# PART 1 - COMPLETED 2025-01-13
 # day 3 part 1 is simple, just use regex to match specified pattern,
 #   then calculate it
 def part1(filename: str) -> int:
