@@ -15,11 +15,10 @@ def part1(filename: str) -> int:
     expr = r"mul\(\d{1,3}\,\d{1,3}\)"
     operations = parse(filename, expr)
     # get the pair of numbers of each operation, then sum their products
-    products = [
-        n[0] * n[1]
-        for n in [
+    return sum([    # return sum of
+        n[0] * n[1] # the products of
+        for n in [  # each pair of numbers a,b from inputs "mul(a,b)"
             list(map(int, operation.strip("mul()").split(',')))
             for operation in operations
         ]
-    ]
-    print(operations, products)
+    ])
