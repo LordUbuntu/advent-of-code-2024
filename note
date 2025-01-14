@@ -1,6 +1,0 @@
-Every day follows the logic of:
-1. parse input
-2. do something with that input
-3. return a number
-So one obvious refactor is to have a parse function and then the respective function
-for the day
