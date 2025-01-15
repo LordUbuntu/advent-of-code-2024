@@ -23,3 +23,11 @@ def part1(filename: str) -> int:
             for operation in operations
         ]
     ])
+
+
+# PART 2 -
+# day 3 part 2 is abot as simple. The difference is that the regex to
+#   match with this time needs to match between tokens "do()" up until
+#   "don't()"
+def part2(filename: str) -> int:
+    pass
