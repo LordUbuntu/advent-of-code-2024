@@ -31,13 +31,15 @@ def part1(filename: str) -> int:
 #   "don't()"
 def part2(filename: str) -> int:
     # match all the the substrings between "do()" and "don't()"
+    string = open(filename, "r").read()
     regex = r"(?:do\(\)|^)(.*?)(?:don\'t\(\)|$)"
-    matches = re.findall(regex, open(filename, "r").read())
+    matches = re.findall(regex, string)
+    print(f"{string}\n{regex}\n{matches}\n\n")
     # match all mul operations within those substrings
-    str = ''.join(matches)
-    print(str)
+    string = ''.join(matches)
     regex = r"mul\(\d{1,3}\,\d{1,3}\)"
-    operations = re.findall(regex, str)
+    operations = re.findall(regex, string)
+    print(f"{string}\n{regex}\n{matches}\n\n")
     print(operations)
     # return the sum like before
     return sum([    # return sum of
