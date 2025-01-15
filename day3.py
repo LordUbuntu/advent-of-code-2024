@@ -25,6 +25,7 @@ def part1(filename: str) -> int:
     ])
 
 
+from pprint import pprint  # just to make debug messages nicer
 # PART 2 -
 # day 3 part 2 is abot as simple. The difference is that the regex to
 #   match with this time needs to match between tokens "do()" up until
@@ -34,13 +35,13 @@ def part2(filename: str) -> int:
     string = open(filename, "r").read()
     regex = r"(?:do\(\)|^)(.*?)(?:don\'t\(\)|$)"
     matches = re.findall(regex, string)
-    print(f"{string}\n{regex}\n{matches}\n\n")
+    pprint(f"{string}\n{regex}\n{matches}\n\n")
     # match all mul operations within those substrings
     string = ''.join(matches)
     regex = r"mul\(\d{1,3}\,\d{1,3}\)"
     operations = re.findall(regex, string)
-    print(f"{string}\n{regex}\n{matches}\n\n")
-    print(operations)
+    pprint(f"{string}\n{regex}\n{matches}\n\n")
+    pprint(operations)
     # return the sum like before
     return sum([    # return sum of
         n[0] * n[1] # the products of
