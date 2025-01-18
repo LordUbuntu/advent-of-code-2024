@@ -25,7 +25,6 @@ def part1(filename: str) -> int:
     ])
 
 
-from pprint import pprint  # just to make debug messages nicer
 # PART 2 -
 # This one was great becaue I learned a ton about regex along the way
 # I initially thought to try creating a regex to only capture substrings
