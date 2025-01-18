@@ -48,6 +48,7 @@ def part2(filename: str) -> int:
                 if accepting_commands:
                     nums = [
                         int(num)
-                        for num in substring.strip("mul()").split(',')
+                        for num in substring[0].strip("mul()").split(',')
                     ]
                     total += nums[0] * nums[1]
+    return total
