@@ -25,7 +25,7 @@ def part1(filename: str) -> int:
     ])
 
 
-# PART 2 -
+# PART 2 - COMPLETED 2025-01-18
 # This one was great becaue I learned a ton about regex along the way
 # I initially thought to try creating a regex to only capture substrings
 #   between "do()" and "don't()" but after checking solutions once my
@@ -36,15 +36,15 @@ def part2(filename: str) -> int:
     total = 0
     regex = r"do\(\)|don\'t\(\)|mul\(\d{1,3},\d{1,3}\)"
     string = open(filename, "r").read()
-    accepting_commands = True
+    do = True
     for substring in re.finditer(regex, string):
         match substring[0]:
             case "do()":
-                accepting_commands = True
+                do = True
             case "don't()":
-                accepting_commands = False
+                do = False
             case _:
-                if accepting_commands:
+                if do:
                     nums = [
                         int(num)
                         for num in substring[0].strip("mul()").split(',')
