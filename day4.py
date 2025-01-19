@@ -8,14 +8,12 @@
 #   mark it as done and move on to the next one. X's are chosen by simply
 #   scanning across the grid.
 
-# parse input into a grid of characters. An adjacency matrix is
-#   not needed, overcomplicates the problem likely.
-def parse(filename: str) -> list:
-    return open(filename, "r").readlines()
 
 # then utilize a modified DFS with a global list of explored roots (X's)
 #   to explore and match every "XMAS" along the 8 grid directions
 #   (which is vertical, horizontal, and diagonal)
+def part1(filename: str) -> int:
+    G = open(filename, "r").readlines()
 
 
 # DFS for reference
