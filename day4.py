@@ -45,7 +45,7 @@ def count_matches(grid: list, root: tuple) -> int:
             # end if OOB
             if x < 0 or x >= len(grid[0]):
                 break
-            if y < 0 or y >= len(grid[0]):
+            if y < 0 or y >= len(grid):
                 break
             print(" x y char = ", x, y, grid[y][x])
             # add current letter to string
