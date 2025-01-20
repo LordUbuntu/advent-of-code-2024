@@ -34,12 +34,11 @@ def count_matches(grid: list, root: tuple) -> int:
     directions = list(product(*repeat(range(-1, 2), 2)))
     directions.remove((0, 0))
     # go through each direction
-    print(directions)
     for dx, dy in directions:
         string = []
         x = root[0]
         y = root[1]
-        print(" dx dy = ", dx, dy)
+        print(" x y dx dy = ", x, y, dx, dy)
         # get the current string in one of the 8 directions
         for _ in range(4):
             # end if OOB
@@ -47,14 +46,11 @@ def count_matches(grid: list, root: tuple) -> int:
                 break
             if y < 0 or y >= len(grid):
                 break
-            print(" x y char = ", x, y, grid[y][x])
             # add current letter to string
             string.append(grid[y][x])
             # go to next step in sequence
             x += dx
             y += dy
-            print(" x y -> ", x, y)
-        print("    ", string)
         # check if string is correct
         if ''.join(string) == "XMAS":
             print("count ", string)
