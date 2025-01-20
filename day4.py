@@ -1,7 +1,7 @@
 # Jacobus Burger (started 2025-01-18)
 # 
 
-# PART 1 - 
+# PART 1 - COMPLETED 2025-01-19
 # So far the problem seems pretty simple. I need to implement a DFS that
 #   starts on any X and goes in one of the 8 grid directions. If it finds
 #   the letters "XMAS" in that order, then after fully exploring that X
@@ -20,9 +20,7 @@ def part1(filename: str) -> int:
     for y in range(len(G)):
         for x in range(len(G[0])):
             if G[y][x] == 'X':
-                print("found X at", (x, y))
                 total += count_matches(G, (x, y))
-                print("\n\n")
     return total
 
 
@@ -38,7 +36,6 @@ def count_matches(grid: list, root: tuple) -> int:
         string = []
         x = root[0]
         y = root[1]
-        print(" x y dx dy = ", x, y, dx, dy)
         # get the current string in one of the 8 directions
         for _ in range(4):
             # end if OOB
@@ -53,6 +50,5 @@ def count_matches(grid: list, root: tuple) -> int:
             y += dy
         # check if string is correct
         if ''.join(string) == "XMAS":
-            print("count ", string)
             count += 1
     return count
