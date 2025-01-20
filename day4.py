@@ -16,15 +16,34 @@ def part1(filename: str) -> int:
     G = open(filename, "r").readlines()
 
 
-# DFS for reference
-# G is graph, v is starting vertex
-# most straigh-forward solution
-def dfs(G, v):
-    visited, stack = [], [v]
-    while stack:
-        v = stack.pop()
-        visited.append(v)
-        for w in reversed(G[v]):
-            if w not in visited:
-                stack.append(w)
-    return visited
+from itertools import product, repeat
+def count_matches(grid: list, root: tuple) -> int:
+    count = 0
+    # create a set of directions to explore around the root X
+    directions = list(product(*repeat(range(-1, 2), 2)))
+    directions.remove((0, 0))
+    # go through each direction
+    print(directions)
+    for dx, dy in directions:
+        string = []
+        x = root[0]
+        y = root[1]
+        print("  ", dx, dy)
+        # get the current string in one of the 8 directions
+        for _ in range(4):
+            # end if OOB
+            if x < 0 or x >= len(grid[0]):
+                break
+            if y < 0 or y >= len(grid[0]):
+                break
+            print("   ", x, y, grid[y][x])
+            # add current letter to string
+            string.append(grid[y][x])
+            # go to next step in sequence
+            x += dx
+            y += dy
+        print("    ", string)
+        # check if string is correct
+        if ''.join(string) == "XMAS":
+            count += 1
+    return count
