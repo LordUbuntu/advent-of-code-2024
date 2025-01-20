@@ -13,7 +13,18 @@
 #   to explore and match every "XMAS" along the 8 grid directions
 #   (which is vertical, horizontal, and diagonal)
 def part1(filename: str) -> int:
+    total = 0
+    # parse input
     G = open(filename).read().splitlines()
+    # scan grid for any X's
+    for y in range(len(G)):
+        for x in range(len(G[0])):
+            if G[y][x] == 'X':
+                print("found X at", (x, y))
+                total += count_matches(G, (x, y))
+                print("\n\n")
+    return total
+
 
 
 from itertools import product, repeat
@@ -28,7 +39,7 @@ def count_matches(grid: list, root: tuple) -> int:
         string = []
         x = root[0]
         y = root[1]
-        print("  ", dx, dy)
+        print(" dx dy = ", dx, dy)
         # get the current string in one of the 8 directions
         for _ in range(4):
             # end if OOB
@@ -36,14 +47,16 @@ def count_matches(grid: list, root: tuple) -> int:
                 break
             if y < 0 or y >= len(grid[0]):
                 break
-            print("   ", x, y, grid[y][x])
+            print(" x y char = ", x, y, grid[y][x])
             # add current letter to string
             string.append(grid[y][x])
             # go to next step in sequence
             x += dx
             y += dy
+            print(" x y -> ", x, y)
         print("    ", string)
         # check if string is correct
         if ''.join(string) == "XMAS":
+            print("count ", string)
             count += 1
     return count
