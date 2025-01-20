@@ -13,7 +13,7 @@
 #   to explore and match every "XMAS" along the 8 grid directions
 #   (which is vertical, horizontal, and diagonal)
 def part1(filename: str) -> int:
-    G = open(filename, "r").readlines()
+    G = open(filename).read().splitlines()
 
 
 from itertools import product, repeat
