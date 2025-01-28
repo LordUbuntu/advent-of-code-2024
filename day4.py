@@ -20,13 +20,13 @@ def part1(filename: str) -> int:
     for y in range(len(G)):
         for x in range(len(G[0])):
             if G[y][x] == 'X':
-                total += count_matches(G, (x, y))
+                total += count_matches_part1(G, (x, y))
     return total
 
 
 
 from itertools import product, repeat
-def count_matches(grid: list, root: tuple) -> int:
+def count_matches_part1(grid: list, root: tuple) -> int:
     count = 0
     # create a set of directions to explore around the root X
     directions = list(product(*repeat(range(-1, 2), 2)))
@@ -52,3 +52,10 @@ def count_matches(grid: list, root: tuple) -> int:
         if ''.join(string) == "XMAS":
             count += 1
     return count
+
+
+def count_matches_part2(grid: list, root: tuple) -> int:
+    # this is much easier now, we simply need to find the middle of an
+    #   X of MAS's (an A) and count it. That can be done all inline
+    #   because it is much simpler
+    pass
