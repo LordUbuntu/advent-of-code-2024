@@ -2,11 +2,10 @@
 # Advent Of Code - Day 1
 
 # Day 1 - Parser
-# From my understanding, the parsing from part 1 (and parsing for any day) is
-#   the same between parts, and sometimes between days too. So it makes the
-#   most sense to write the parse seperate of each part's solver.
-# The idea is to split the two vertical lists of numbers into two lists, so data
-#   ingested in the format `a   b\n` becomes `int(a), int(b)` and then is stored
+# Parsing seems to be a consistently different task between days so
+#   I've opted to write the input parsing as a seperate function to
+#   take the inputs with.
+# The idea here is to split the two columns into two lists of int
 #   into two lists `A` and `B`.
 def parse(filename: str) -> list:
     A, B = [], []
