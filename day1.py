@@ -22,9 +22,8 @@ def parse(filename: str) -> list:
 
 
 # Part 1 - Theory
-# My understanding is we want to take the difference between the left and right
-#   elements of the list once both sides are sorted. Thus we tally the
-#   difference between each list
+# My understanding is we take the difference between the left and right
+#   elements of the lists after they're sorted. Then sum the difference.
 # Example:
 # 3   4
 # 4   3
@@ -41,8 +40,8 @@ def parse(filename: str) -> list:
 # 4   9   d5
 # 2 + 1 + 0 + 1 + 2 + 5 = 11
 # Solution Idea:
-# From this, one direct idea is to take the two columns of numbers into their own
-#   seperate lists, sort them, then take their sorted differences like above.
+# A direct approach is to take the two lists, sort them, and add their
+#   differences as explained above.
 # Method:
 #   1. parse input into arrays A and B
 #   2. sort A and B
