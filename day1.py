@@ -65,18 +65,9 @@ def part1(filename: str) -> int:
     # calculate sum of difference
     return sum([abs(a - b) for a, b in zip(A, B)])
 # Thoughts:
-# This is the most obvious solution, though it's likely possible to use a
-#   better approach by sorting inputs as they are received. It doesn't seem
-#   possible to do better than two passes of n for O(2n) however, as the least
-#   number may be at the end of either side of the list, and so it wouldn't
-#   be possible to calculate the running differences without receiving the full
-#   of both lists first. I considered a greedy approach to this, but that would
-#   calculate the wrong differences preemptively. There is no way to preempt
-#   the differences as far as I am aware.
-# One potential improvement is to use a sort of selection sort or dequeue to
-#   add elements in a sorted order as they are received, so that the sort step
-#   is unnecessary later. It's unclear if that has any performance improvement
-#   though...
+# This is the most obvious solution. There's probably a better approach
+#   by sorting inputs as they're received. But the program is only
+#   roughly O(2n) at worst right now.
 
 
 # Part 2 - Theory
