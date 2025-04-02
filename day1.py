@@ -71,12 +71,12 @@ def part1(filename: str) -> int:
 
 
 # Part 2 - Theory
-# My understanding is that we want to find the count of each number on the left list
-#   in the right list. From there we want to multiply the count with the current
-#   number on the left and add that to a running total. Finally, get the sum of all
-#   that.
-# To do this, we can fallow the same parsing as part 1, but simply change the
-#   calculation.
+# My understanding is we want the occurences in the right column of
+#   each number from the left one, then multiply that coun with the
+#   number we're seeking occurences for, and then add that to the total
+#   and finally return a sum of it all.
+# To do this, we can fallow the same parsing as part 1, but change
+#   the logic for calculating.
 # Example:
 # 3   4
 # 4   3
@@ -93,9 +93,9 @@ def part1(filename: str) -> int:
 # 3   3o
 # 9 + 4 + 0 + 0 + 9 + 9
 # Solution Idea:
-# The items can be ingested into two lists, the left A can be left unsorted,
-#   the right B can be made into a hashmap storing the count of occurences
-#   for a given number in the right list B.
+# The left column A will be left unsorted and the right column B will
+#   be made into a hashmap storing the count of occurences of each
+#   number in B.
 # Method:
 # 1. parse input into arrays A and B
 # 2. create a hashmap of occurences from B
@@ -113,10 +113,11 @@ def part1(filename: str) -> int:
 #           map[value] = 1
 #       else:
 #           map[value] += 1
-#   (using Counter from itertools accomplishes the same thing but faster, I love
-#   snakelang 🐍)
 #   3. tally
 #   return sum([a * map[a] for a in A])
+# Notes:
+# Part 2 of the pseudocode can be accomplished using Python's Counter
+#   object from collections. I love snakelang 🐍
 from collections import Counter
 
 def part2(filename: str) -> int:
