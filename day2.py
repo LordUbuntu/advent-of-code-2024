@@ -3,7 +3,7 @@
 
 
 # problem data comes as a list of rows with numbers (a list of number
-#   lists). So it can be ingested and parsed one line at a time, each
+#   lists). So it can be parsed one line at a time, each
 #   line producing a list. I'll do that as a 2D list
 def parse(filename: str) -> list[int]:
     with open(filename, "r") as file:
@@ -15,6 +15,10 @@ def parse(filename: str) -> list[int]:
 
 
 # credit to user "Independent_Check_62" on https://www.reddit.com/r/adventofcode/comments/1h4ncyr/2024_day_2_solutions/
+# this approach is clever. We use Python sets to find a set of the
+#   differences across the report between levels using a sliding
+#   window, then we see if that set is a subset of a monotonically
+#   increasing or decreasing order.
 def valid(report: list) -> bool:
     # create a set of differences
     deltas = {report[i + 1] - report[i] for i in range(len(report) - 1)}
