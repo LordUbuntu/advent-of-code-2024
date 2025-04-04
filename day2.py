@@ -48,10 +48,8 @@ def part1(filename: str) -> int:
 
 # PART 2 COMPLETE 2025-01-10
 # Part 2 is part 1 but with a grace of one failure (bool flag)
-# The solution to part 2 is to do the same as part 1 but to check the
-#   combinations of the report with 1 level removed and if any of those
-#   combinations are correct, to count it as safe and move on. Same as
-#   before but hopefully it works properly this time!
+# The part 2 solution is the same as part 1 with the caveat that
+#   1 wrong level can be removed.
 def part2(filename: str) -> int:
     reports = parse(filename)
     total = sum([
