@@ -9,8 +9,9 @@ def parse(filename: str, pattern: str) -> list:
 
 
 # PART 1 - COMPLETED 2025-01-13
-# day 3 part 1 is simple, just use regex to match specified pattern,
-#   then calculate it
+# The first part is simple. Utilize a regex to match the specified
+#   substring of the form "mul(abc,def)", then calculate those
+#   products, and add to the sum
 def part1(filename: str) -> int:
     # mul\(\d{1,3}\,\d{1,3}\) == mul(123,456)
     expr = r"mul\(\d{1,3}\,\d{1,3}\)"
